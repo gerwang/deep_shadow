@@ -266,6 +266,7 @@ def run(args, task_name):
                     missing_lines = gen_lines_from_src_to_points(missing_points.cpu(), curr_light_sources_vu.cpu(),
                         w - 1, h - 1)
                     lines = lines + missing_lines
+                    points_to_calc = torch.cat([points_to_calc, missing_points])
 
                 for idx, line in enumerate(lines):  # go over each line from src to boundary
                     # if light is behind camera plane, reverse scan order
